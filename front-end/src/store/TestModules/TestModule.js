@@ -17,7 +17,8 @@ export const TestModule = {
     searchQuery: '',
     thisUser: '',
     gotUser: '',
-    totalPages: 2
+    totalPages: 2,
+    slidesPerPage: 5
   }),
   getters: {
     sortByCity (state) {
@@ -27,6 +28,9 @@ export const TestModule = {
   mutations: {
     setGotUser (state, response) {
       state.gotUser = response
+    },
+    setSlidesPerPage (state, slidesOnPage) {
+      state.slidesPerPage = slidesOnPage
     },
     showUser (state, user) {
       state.thisUser = user.id
@@ -66,7 +70,7 @@ export const TestModule = {
           }
         })
         commit('setUsers', response.data)
-        state.totalPages = Math.ceil(this.users.length / 5)
+        state.totalPages = Math.ceil(state.users.length / state.slidesPerPage)
       } catch (e) {
         console.log(e)
       }

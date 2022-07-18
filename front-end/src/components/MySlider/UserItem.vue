@@ -1,14 +1,18 @@
 <template>
     <article class="card__user">
+        <router-link
+                @click="openUser(user)"
+                to="/userpage"
+                class="user__data"
+        >
         <div class="img__user__block">
             <img
                     class="img__user"
                     :src="user.avatar"
-                    @click="openUser(user)"
             />
         </div>
         <div>
-            <h1 @click="openUser(user)" >имя: {{user.name}}</h1>
+            <h1 >имя: {{user.name}}</h1>
         </div>
         <div>
             <h1>город: {{user.city}}</h1>
@@ -21,6 +25,7 @@
                 <h5>email: {{user.email}}</h5>
             </div>
         </div>
+        </router-link>
         <div><h5>сайт: <a :href="user.site">{{user.site}}</a></h5></div>
         <button v-if="buttonEnable === true" class="btn__remove" @click="removeUser(user)">Удалить</button>
     </article>
@@ -49,7 +54,7 @@ export default {
     openUser (user) {
       this.showUser(user)
       this.fetchUser()
-      this.$router.push('/userpage')
+      // this.$router.push('/userpage')
     },
     ...mapMutations({
       showUser: 'TestModule/showUser'
@@ -61,6 +66,12 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+.user__data
+   text-decoration: none
+   color: black
+.user__data:hover:visited
+   text-decoration: none
+   color: black
 h1
     margin: 0
 h5
@@ -76,6 +87,7 @@ h5
     gap: 16px
     text-align: left
     width: 20%
+    color: black
 .img__user__block
     width: 100%
     height: 250px
@@ -97,4 +109,7 @@ h5
     color: red !important
     background: white !important
     border: 2px solid red !important
+@media screen and (max-width: 1024px)
+ .card__user
+    width: 100%
 </style>

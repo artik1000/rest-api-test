@@ -2,7 +2,6 @@
   <nav class="main__nav">
     <router-link to="/">Users</router-link>
     <router-link to="/adduser">AddUser</router-link>
-    <router-link to="/userpage">User Page</router-link>
   </nav>
   <router-view/>
 </template>
@@ -15,6 +14,8 @@
   text-align: center
   color: #2c3e50
   width: 100vw
+  margin: 0
+  padding: 0
 
 .main__nav
   padding: 24px
